@@ -23,7 +23,7 @@ user_main_keyboard = ReplyKeyboardMarkup(keyboard=[
     ],
     [
         KeyboardButton(text="📨 Xabar yuborish"),
-        KeyboardButton(text="⚙️ Sozlamalar")
+        KeyboardButton(text="settings")
     ]
 
 ],
@@ -95,8 +95,22 @@ async def lavash_big_callback(callback: types.CallbackQuery):
     await callback.message.answer("Big Lavash savatga qo‘shildi.")
 
 async def savat_handler(message: types.Message):
-    await message.answer("Siz savat tugmasini bosdingiz", reply_markup=user_main_keyboard)
+        await message.answer("Siz savat tugmasini bosdingiz", reply_markup=user_main_keyboard)
 
+async def buyurtmalar_callback(message: types.Message):
+        await message.answer("Iltimos menu qismini bosing 😁", reply_markup=user_main_keyboard)
+
+async def settings(message: types.Message):
+        await message.answer("Iltimos menu qismini bosing 😁", reply_markup=user_main_keyboard)
+
+async def send_messages(message: types.Message):
+        await message.answer("Iltimos menu qismini bosing 😁", reply_markup=user_main_keyboard)
+
+async def for_aloqa(message: types.Message):
+        await message.answer("Iltimos menu qismini bosing 😁", reply_markup=user_main_keyboard)
+
+async def sets_func(message: types.Message):
+    await message.answer("Bu qism vaqtinchalik ish faoliyatida emas . Noqulayliklar uchun uzur suraymiz 🫶")
 
 async def main():
     bot = Bot(token=Bot_token)
@@ -106,7 +120,12 @@ async def main():
     dp.message.register(back_handler, F.text == "🔙 Orqaga qaytish")
     dp.message.register(handler_lavash, F.text == "Lavash")
     dp.message.register(savat_handler, F.text == "📥 Savat")
-
+    dp.message.register(buyurtmalar_callback, F.text == "📋 Mening buyurtmalarim")
+    dp.message.register(settings, F.text == "settings")
+    dp.message.register(send_messages, F.text == "📨 Xabar yuborish")
+    dp.message.register(for_aloqa, F.text == "for 📞 Aloqa")
+    dp.message.register(sets_func , F.text == "Setlar")
+    dp.message.register(sets_func, F.text == "burger")
 
     dp.callback_query.register(mini_lavash_callback, F.text == "lavash mini")
     dp.callback_query.register(lavash_big_callback, F.text == "lavash original")
